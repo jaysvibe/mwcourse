@@ -600,24 +600,29 @@ html[data-theme="dark"] .lesson-row.today{background:rgba(255,214,0,.10)}
 
 
 
-/* ---------------- 零件史 ---------------- */
-.hist{margin-top:40px;border-top:1px solid var(--line);padding-top:22px}
-.hist-head{margin-bottom:14px}
-.hist-head h2{margin:6px 0 4px;font-size:20px}
+
+/* ---------------- 零件史（长文版） ---------------- */
+.hist{margin-top:44px;border-top:1px solid var(--line);padding-top:24px}
+.hist-head{margin-bottom:18px}
+.hist-head h2{margin:6px 0 4px;font-size:22px}
 .hist-head p{margin:0;color:var(--muted);font-size:13px}
-.hist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
-.hist-card{position:relative;border:1px solid var(--line-2);border-radius:14px;padding:14px 14px 10px;background:var(--panel)}
-.hist-num{position:absolute;top:10px;right:12px;font-size:12px;font-weight:800;color:var(--brand)}
-.hist-name{font-weight:800;font-size:15px;color:var(--ink)}
-.hist-en{font-size:11px;color:var(--muted);font-weight:500;margin-left:6px}
-.hist-era{font-size:11.5px;color:var(--muted);margin-top:2px}
-.hist-fig{background:var(--panel-2);border-radius:10px;margin:8px 0 6px;padding:4px}
-.hist-fig svg{display:block;width:100%;height:auto}
-.hist-p{font-size:12.5px;line-height:1.55;margin:6px 0;color:var(--ink-2)}
-.hist-label{display:inline-block;font-size:10.5px;font-weight:800;color:var(--brand);margin-right:5px}
-.hist-twist{background:var(--brand-soft);border-radius:8px;padding:6px 8px}
-.hist-src{margin-top:8px;border-top:1px dashed var(--line-2);padding-top:6px}
-.hist-src a{display:inline-block;font-size:11px;color:var(--muted);margin-right:10px;text-decoration:underline}
+.hs{border:1px solid var(--line-2);border-radius:16px;padding:20px 22px;background:var(--panel);margin-bottom:18px}
+.hs-top{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.hs-era{font-size:12px;color:var(--muted)}
+.hs-name{margin:8px 0 6px;font-size:22px;color:var(--ink)}
+.hs-en{font-size:12px;color:var(--muted);font-weight:500;margin-left:8px}
+.hs-lead{margin:0 0 12px;font-size:14px;color:var(--ink-2);border-left:3px solid var(--brand);padding-left:10px}
+.hs-fig{margin:12px 0;background:var(--panel-2);border-radius:12px;padding:8px}
+.hs-fig svg{display:block;width:100%;max-width:460px;height:auto;margin:0 auto}
+.hs-fig figcaption{text-align:center;font-size:11.5px;color:var(--muted);margin-top:4px}
+.hs-h{margin:18px 0 6px;font-size:15px;color:var(--ink)}
+.hs-p{margin:6px 0;font-size:13.5px;line-height:1.75;color:var(--ink-2)}
+.hs-box{margin-top:12px;padding:10px 12px;border-radius:10px;background:var(--panel-2);font-size:13px;line-height:1.65;color:var(--ink-2)}
+.hs-box.twist{background:var(--brand-soft)}
+.hs-box.sales{background:var(--blue-soft, var(--panel-2))}
+.hs-label{display:inline-block;font-size:11px;font-weight:800;color:var(--brand);margin-right:6px}
+.hs-src{margin-top:12px;border-top:1px dashed var(--line-2);padding-top:8px}
+.hs-src a{display:inline-block;font-size:11.5px;color:var(--muted);margin-right:12px;text-decoration:underline}
 
 /* ============ 3D 实验室 v2 ============ */
 .lab-head{max-width:1200px;margin:0 auto;padding:34px 24px 6px}
@@ -2033,89 +2038,88 @@ window.COURSE.content[7] = {
 </script>
 <script>
 /* ============================================================
-   零件史 · 每天课后 5 则
+   零件史 · 每课 2 则（长故事版）
    规则：史实至少两个来源；年代有争议时并列；不写“据说”。
    ============================================================ */
 window.HISTORY = {
-  title: "零件史 · 5 则",
-  sub: "每天课后五件小东西，看看它们是怎么从“能用”变成“好用”的。",
-  items: [
-    {
-      id: "thread",
-      name: "螺纹",
-      en: "Screw thread",
-      era: "公元前 3 世纪 → 15 世纪 → 1841 → 1947",
-      fig: "hScrew",
-      story: "阿基米德被记作“螺旋”的发明者，但他造的是提水机和蜗杆，不是紧固件。公元前 1 世纪，木螺旋已经用在压榨机上；金属螺钉和螺母要到 15 世纪才出现，17 世纪才装进钟表。",
-      today: "从手机里的 M2 到风电塔筒的 M64，牙型、螺距、公差全部标准化（ISO 米制、UNC/UNF）。",
-      principle: "螺纹就是把斜面绕在圆柱上：转一圈，前进一个导程；导程角越小越省力，走得也越慢。",
-      twist: "阿基米德螺旋比“螺丝钉”早了两千年。把螺纹用来锁紧，是后来的人补上的。",
-      sources: [
-        { t: "Britannica · screw fastener", u: "https://www.britannica.com/technology/screw-fastener" },
-        { t: "Britannica · screw", u: "https://www.britannica.com/technology/screw" }
-      ]
-    },
-    {
-      id: "gear",
-      name: "齿轮",
-      en: "Gear",
-      era: "约公元前 100 年 → 中世纪钟楼 → 工业革命",
-      fig: "hGear",
-      story: "1901 年，希腊安提基特拉沉船里捞出一台青铜“计算机”，约公元前 100 年造，里面藏着 30 个齿轮。这是已知最复杂的古代齿轮机构，此后一千年，没有再出现同等级的东西，直到中世纪教堂钟楼。",
-      today: "从手表到风电齿轮箱，齿形从摆线演化到渐开线，加工从手工锉齿走到滚齿、磨齿。",
-      principle: "齿轮传的是齿数比：主动轮转一圈，从动轮转 z₁/z₂ 圈；转速降下来，扭矩就升上去。",
-      twist: "齿轮不是工业革命的发明。它在古希腊就到过顶峰，然后失传了一千年。",
-      sources: [
-        { t: "Britannica · Antikythera mechanism", u: "https://www.britannica.com/topic/Antikythera-mechanism" },
-        { t: "Britannica · gear", u: "https://www.britannica.com/technology/gear" }
-      ]
-    },
-    {
-      id: "bearing",
-      name: "滚珠轴承",
-      en: "Ball bearing",
-      era: "约公元前 40 年 → 1500 → 1794 → 1907",
-      fig: "hBearing",
-      story: "罗马人在内米湖的船上装了木制滚珠轴承，用来转动桌面，约公元前 40 年。达·芬奇在 1500 年前后画过滚珠轴承草图；1794 年英国人 Philip Vaughan 拿到第一个现代滚珠轴承专利；1907 年 SKF 的 Sven Wingquist 发明双列自调心球轴承。",
-      today: "从滑板轮到机床主轴，深沟球轴承是最常见的滚动轴承；陶瓷球、真空润滑则进了半导体设备。",
-      principle: "用滚动代替滑动，摩擦系数从 0.1 量级降到 0.001 量级（量级估算）——同样的力，发热和磨损都小一个数量级。",
-      twist: "最早的滚珠轴承是木头的，而且不是装在机器上，是装在船上的转桌里。",
-      sources: [
-        { t: "Race Engine Technology · ball bearing", u: "https://www.raceenginetechnology.com/News/back-to-basics-the-ball-bearing" },
-        { t: "Britannica · bearing", u: "https://www.britannica.com/technology/bearing-machine-component" }
-      ]
-    },
-    {
-      id: "ujoint",
-      name: "万向节",
-      en: "Universal joint",
-      era: "古代 → 1545 → 1676 → 今天",
-      fig: "hHooke",
-      story: "让两根成角度的轴同步转动的装置。1545 年 Cardano 描述过万向悬挂；1676 年 Robert Hooke 在《A Description of Helioscopes》里画出了用于天文仪器的万向节，所以英文里它常被叫作 Hooke joint。",
-      today: "从后驱车的传动轴到转向柱；等速万向节（CV joint）用双联结构抵消了单万向节的速度波动。",
-      principle: "单万向节在夹角 θ 下，输出转速会以两倍频波动；两个万向节对称布置，波动可以互相抵消。",
-      twist: "叫它“Cardan joint”其实不太准：Cardano 描述的是悬挂，真正把两根轴连起来的是 Hooke。",
-      sources: [
-        { t: "Britannica · universal joint", u: "https://www.britannica.com/technology/universal-joint" },
-        { t: "Britannica · automobile axle", u: "https://www.britannica.com/technology/automobile/Transmission" }
-      ]
-    },
-    {
-      id: "escapement",
-      name: "擒纵机构",
-      en: "Escapement",
-      era: "13 世纪 → 17 世纪 → 今天",
-      fig: "hEscapement",
-      story: "钟表能把连续的动力变成“一格一格”的走时，靠的就是擒纵机构。13 世纪的欧洲出现了冕状轮擒纵（verge escapement），这是机械钟得以成立的关键；17 世纪英国又发明了锚形擒纵，配摆锤，摆幅更小、走时更准。",
-      today: "机械表里仍是擒纵的天下：瑞士杠杆擒纵、同轴擒纵；原子钟则用石英振荡取代了它。",
-      principle: "擒纵轮被两个擒爪交替挡住、放开，每放一齿，摆轮得到一次能量补充——既计时，又“喂”振荡器。",
-      twist: "钟表最贵的不是齿轮，是擒纵：它决定了走时准不准，也决定了一块表要不要卖几十万。",
-      sources: [
-        { t: "Britannica · escapement", u: "https://www.britannica.com/technology/escapement" },
-        { t: "Britannica · clock", u: "https://www.britannica.com/technology/clock" }
-      ]
-    }
-  ]
+  title: "零件史 · 2 则",
+  sub: "每课两件东西，讲清它从哪来、怎么变成今天这样。",
+  byLesson: {
+    6: [
+      {
+        id: "coil-spring",
+        name: "螺旋弹簧",
+        en: "Helical spring",
+        era: "1500 年前后 → 1670s → 1760 → 20 世纪",
+        lead: "一根盘起来的钢带，先让钟表离开了墙，又让汽车离开了马车时代。",
+        sections: [
+          { h: "起源：为了让钟表能带在身上", p: [
+            "1500 年前后，德国纽伦堡的锁匠 Peter Henlein 做出了可以随身携带的钟表。它没有重锤、没有摆，动力来自一根盘紧的钢带——发条。这是“弹簧”第一次从工具变成动力源：上紧一次，能走几十个小时。",
+            "但发条有个毛病：上满时力量大，快松完时力量小。同一只表，早上快、晚上慢。钟表匠花了两个世纪，才把这个问题解决掉。"
+          ]},
+          { h: "转折：从“动力”变成“振荡器”", p: [
+            "17 世纪下半叶，摆轮加游丝的结构成熟：一根极细的钢带（游丝）拉着摆轮来回摆，摆一次、放一格。游丝的作用不再是“推”，而是“稳住节奏”——弹簧从动力元件变成了频率基准。",
+            "这一步很关键：发条提供能量，游丝决定频率，擒纵机构负责“放行”。三者分工，才有了后来能戴在手上的表。"
+          ]},
+          { h: "演化：从钟表到马车、枪机、汽车", p: [
+            "18 世纪，螺旋弹簧开始大量进入实用领域：马车悬挂、沙发坐垫、枪机击锤。1760 年，英国出现第一件螺旋弹簧专利（Richard Tredwell），弹簧从“手艺”变成“可以保护的技术”。",
+            "20 世纪，独立悬架把螺旋弹簧送上了汽车；今天一台家用车前悬架里，就有两根螺旋弹簧，线径 10–20 mm，和手表游丝用的是同一个公式。"
+          ]},
+          { h: "今天：同一道公式，两种尺度", p: [
+            "手表游丝厚约 0.02 mm，汽车悬架簧线径 10–20 mm，差三个数量级，但刚度都服从 k = G·d⁴/(8·D³·n)。",
+            "差别在工艺：游丝要恒弹性合金、要防磁；悬架簧要喷丸、要防腐、要疲劳寿命 10⁵–10⁶ 次。同一个原理，长成了两个行业。"
+          ]}
+        ],
+        figures: [
+          { fig: "hCoil", cap: "图 1　螺旋弹簧与摆轮游丝：一个存能量，一个定频率" }
+        ],
+        principle: "弹簧存的是能量，不是力。刚度由几何决定：线径、中径、圈数，动一个，整条载荷曲线就变。",
+        twist: "最早让弹簧“有用”的，不是减震，是计时。减震是它后来的副业。",
+        sales: "客户说“弹簧嘛，随便配一个”时，你可以问：它是当动力、当减震，还是当测量元件？三种用法，材料和公差完全不是一回事。",
+        sources: [
+          { t: "Britannica · watch", u: "https://www.britannica.com/technology/watch" },
+          { t: "Britannica · spring", u: "https://www.britannica.com/technology/spring-machine-component" },
+          { t: "Britannica · escapement", u: "https://www.britannica.com/technology/escapement" }
+        ]
+      },
+      {
+        id: "escapement",
+        name: "擒纵机构",
+        en: "Escapement",
+        era: "13 世纪 → 17 世纪 → 今天",
+        lead: "钟表能把连续的动力变成“一格一格”的走时，靠的不是齿轮，是这个小东西。",
+        sections: [
+          { h: "起源：让钟“走”起来的那道闸", p: [
+            "13 世纪的欧洲出现了冕状轮擒纵（verge escapement）。它由两个擒爪交替挡住、放开冕状齿轮，每放一齿，钟摆或摆轮得到一次能量补充。",
+            "在这之前，水钟、日晷都受环境限制；在这之后，机械钟可以靠重锤和齿轮自己走。擒纵被称为“机械钟的心脏”，不是夸张。"
+          ]},
+          { h: "转折：摆锤与锚形擒纵", p: [
+            "17 世纪，英国出现锚形擒纵（anchor escapement），配摆锤使用。它的擒爪像倒置的锚，和齿轮在同一平面内，摆幅更小、摩擦更低，走时精度一下提高了一个档次。",
+            "同一时期，摆轮加游丝的结构用在小表上；大钟用摆，小表用摆轮，擒纵的两种路线就此分开。"
+          ]},
+          { h: "演化：从教堂钟楼到手腕", p: [
+            "18 世纪，Thomas Mudge 做出杠杆擒纵，把“擒纵”和“振荡器”进一步分开，减少干扰；19 世纪，瑞士把它做成可批量生产的杠杆擒纵，机械表的基本结构定型。",
+            "20 世纪，石英晶振取代摆轮，但机械表没有消失——它从计时工具变成了精密机械的象征。"
+          ]},
+          { h: "今天：一块表贵在哪", p: [
+            "今天的机械表，齿轮、发条、表壳都能外包，真正拉开价格的是擒纵：瑞士杠杆、同轴擒纵、恒力擒纵，每一处改动都在解决同一个问题——怎样少干扰振荡器。",
+            "工业上，擒纵的原理也用在意想不到的地方：间歇送料、计数器、点胶机、打印机走纸，都是“连续动力 → 定量放行”。"
+          ]}
+        ],
+        figures: [
+          { fig: "hEscapement", cap: "图 2　冕状轮与擒爪：每放一齿，补一次能量" }
+        ],
+        principle: "擒纵 = 单向离合器 + 定时器：挡住、放开、再挡住，把连续转动切成等间隔的步。",
+        twist: "钟表最贵的不是齿轮，是擒纵；它决定走时准不准，也决定一块表卖几百还是几十万。",
+        sales: "客户抱怨“国产件就是不如进口”时，别急着反驳。问他：差在寿命、精度，还是差在最后一道检测？擒纵的故事说明——决定档次的，往往是最小的那一个零件。",
+        sources: [
+          { t: "Britannica · escapement", u: "https://www.britannica.com/technology/escapement" },
+          { t: "Britannica · clock", u: "https://www.britannica.com/technology/clock" },
+          { t: "Britannica · watch", u: "https://www.britannica.com/technology/watch" }
+        ]
+      }
+    ]
+  }
 };
 
 </script>
@@ -3605,7 +3609,7 @@ p.vacuum = sel("f_vacuum", String(p.vacuum)) === "1" ? 1 : 0;
     });
 
     if (L.exam) html += examSection(L.exam, id);
-    if (window.HISTORY) html += historySection();
+    if (window.HISTORY) html += historySection(id);
 
     html += '<div class="art-foot"><div class="done-row">';
     html += '<button class="done-btn' + (done.indexOf(id) >= 0 ? " is-done" : "") + '" id="doneBtn" type="button">' +
@@ -3629,6 +3633,22 @@ p.vacuum = sel("f_vacuum", String(p.vacuum)) === "1" ? 1 : 0;
 
   /* ---------------- 零件史 ---------------- */
   function histFig(name) {
+    if (name === "hCoil") {
+      var loops = "";
+      for (var i = 0; i < 7; i++) {
+        var x = 34 + i * 15;
+        loops += '<ellipse cx="' + x + '" cy="52" rx="9" ry="24" fill="none" stroke="var(--brand)" stroke-width="2"/>';
+      }
+      loops += '<line x1="26" y1="52" x2="34" y2="52" stroke="var(--brand)" stroke-width="2"/>';
+      loops += '<line x1="124" y1="52" x2="132" y2="52" stroke="var(--brand)" stroke-width="2"/>';
+      var spiral = '<path d="M150 48 a6 6 0 1 1 12 0 a10 10 0 1 1 -20 0 a14 14 0 1 1 28 0" fill="none" stroke="var(--blue)" stroke-width="1.8"/>';
+      return '<svg viewBox="0 0 200 120" role="img" aria-label="螺旋弹簧与摆轮游丝">' +
+        loops + spiral +
+        '<circle cx="150" cy="48" r="3" fill="var(--blue)"/>' +
+        '<text x="78" y="104" text-anchor="middle" font-size="10" fill="var(--muted)">螺旋弹簧：存能量</text>' +
+        '<text x="150" y="104" text-anchor="middle" font-size="10" fill="var(--muted)">游丝：定频率</text>' +
+        "</svg>";
+    }
     if (name === "hScrew") {
       var th = "";
       for (var i = 0; i < 7; i++) {
@@ -3702,28 +3722,39 @@ p.vacuum = sel("f_vacuum", String(p.vacuum)) === "1" ? 1 : 0;
       "</svg>";
   }
 
-  function historySection() {
+  function historySection(id) {
     var H = window.HISTORY;
-    if (!H || !H.items || !H.items.length) return "";
-    var cards = H.items.map(function (it, i) {
+    if (!H || !H.byLesson) return "";
+    var list = H.byLesson[id];
+    if (!list || !list.length) return "";
+
+    var stories = list.map(function (it, idx) {
+      var figs = (it.figures || []).map(function (f) {
+        return '<figure class="hs-fig">' + histFig(f.fig) + (f.cap ? "<figcaption>" + esc(f.cap) + "</figcaption>" : "") + "</figure>";
+      }).join("");
+      var secs = (it.sections || []).map(function (s) {
+        return '<h4 class="hs-h">' + esc(s.h) + "</h4>" + (s.p || []).map(function (p) {
+          return '<p class="hs-p">' + md(p) + "</p>";
+        }).join("");
+      }).join("");
       var srcs = (it.sources || []).map(function (s) {
         return '<a href="' + s.u + '" target="_blank" rel="noopener">' + esc(s.t) + "</a>";
       }).join("");
-      return '<article class="hist-card">' +
-        '<div class="hist-num">' + (i + 1) + "</div>" +
-        '<div class="hist-name">' + esc(it.name) + '<span class="hist-en">' + esc(it.en) + "</span></div>" +
-        '<div class="hist-era">' + esc(it.era) + "</div>" +
-        '<div class="hist-fig">' + histFig(it.fig) + "</div>" +
-        '<p class="hist-p">' + md(it.story) + "</p>" +
-        '<p class="hist-p"><span class="hist-label">今天</span>' + md(it.today) + "</p>" +
-        '<p class="hist-p"><span class="hist-label">原理</span>' + md(it.principle) + "</p>" +
-        '<p class="hist-p hist-twist"><span class="hist-label">反常识</span>' + md(it.twist) + "</p>" +
-        '<div class="hist-src">' + srcs + "</div>" +
+      return '<article class="hs">' +
+        '<div class="hs-top"><span class="chip warm">零件史 ' + (idx + 1) + " / " + list.length + "</span>" +
+        '<span class="hs-era">' + esc(it.era) + "</span></div>" +
+        '<h3 class="hs-name">' + esc(it.name) + '<span class="hs-en">' + esc(it.en) + "</span></h3>" +
+        '<p class="hs-lead">' + md(it.lead) + "</p>" +
+        figs + secs +
+        '<div class="hs-box"><span class="hs-label">原理一句话</span>' + md(it.principle) + "</div>" +
+        '<div class="hs-box twist"><span class="hs-label">反常识</span>' + md(it.twist) + "</div>" +
+        '<div class="hs-box sales"><span class="hs-label">讲给客户听</span>' + md(it.sales) + "</div>" +
+        '<div class="hs-src">' + srcs + "</div>" +
         "</article>";
     }).join("");
+
     return '<section class="hist" id="hist"><div class="hist-head"><span class="chip warm">课后</span>' +
-      "<h2>" + esc(H.title) + "</h2><p>" + esc(H.sub) + "</p></div>" +
-      '<div class="hist-grid">' + cards + "</div></section>";
+      "<h2>" + esc(H.title) + "</h2><p>" + esc(H.sub) + "</p></div>" + stories + "</section>";
   }
 
   /* ---------------- 课后测验（逐题作答） ---------------- */

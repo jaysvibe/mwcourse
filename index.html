@@ -599,6 +599,26 @@ html[data-theme="dark"] .lesson-row.today{background:rgba(255,214,0,.10)}
 
 
 
+
+/* ---------------- 零件史 ---------------- */
+.hist{margin-top:40px;border-top:1px solid var(--line);padding-top:22px}
+.hist-head{margin-bottom:14px}
+.hist-head h2{margin:6px 0 4px;font-size:20px}
+.hist-head p{margin:0;color:var(--muted);font-size:13px}
+.hist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
+.hist-card{position:relative;border:1px solid var(--line-2);border-radius:14px;padding:14px 14px 10px;background:var(--panel)}
+.hist-num{position:absolute;top:10px;right:12px;font-size:12px;font-weight:800;color:var(--brand)}
+.hist-name{font-weight:800;font-size:15px;color:var(--ink)}
+.hist-en{font-size:11px;color:var(--muted);font-weight:500;margin-left:6px}
+.hist-era{font-size:11.5px;color:var(--muted);margin-top:2px}
+.hist-fig{background:var(--panel-2);border-radius:10px;margin:8px 0 6px;padding:4px}
+.hist-fig svg{display:block;width:100%;height:auto}
+.hist-p{font-size:12.5px;line-height:1.55;margin:6px 0;color:var(--ink-2)}
+.hist-label{display:inline-block;font-size:10.5px;font-weight:800;color:var(--brand);margin-right:5px}
+.hist-twist{background:var(--brand-soft);border-radius:8px;padding:6px 8px}
+.hist-src{margin-top:8px;border-top:1px dashed var(--line-2);padding-top:6px}
+.hist-src a{display:inline-block;font-size:11px;color:var(--muted);margin-right:10px;text-decoration:underline}
+
 /* ============ 3D 实验室 v2 ============ */
 .lab-head{max-width:1200px;margin:0 auto;padding:34px 24px 6px}
 .lab-head h1{font-size:clamp(1.6rem,3vw,2.2rem);margin:0 0 8px;letter-spacing:-.02em}
@@ -2008,6 +2028,94 @@ window.COURSE.content[7] = {
       { q: "样本刚度和你手算差 20%，最该先查？", opts: ["颜色", "有效圈数与中径取值", "包装", "交期"], a: 1, why: "有效圈数（总圈数−2）和中径（外径−线径）是最常见的两个错。" }
     ]
   }
+};
+
+</script>
+<script>
+/* ============================================================
+   零件史 · 每天课后 5 则
+   规则：史实至少两个来源；年代有争议时并列；不写“据说”。
+   ============================================================ */
+window.HISTORY = {
+  title: "零件史 · 5 则",
+  sub: "每天课后五件小东西，看看它们是怎么从“能用”变成“好用”的。",
+  items: [
+    {
+      id: "thread",
+      name: "螺纹",
+      en: "Screw thread",
+      era: "公元前 3 世纪 → 15 世纪 → 1841 → 1947",
+      fig: "hScrew",
+      story: "阿基米德被记作“螺旋”的发明者，但他造的是提水机和蜗杆，不是紧固件。公元前 1 世纪，木螺旋已经用在压榨机上；金属螺钉和螺母要到 15 世纪才出现，17 世纪才装进钟表。",
+      today: "从手机里的 M2 到风电塔筒的 M64，牙型、螺距、公差全部标准化（ISO 米制、UNC/UNF）。",
+      principle: "螺纹就是把斜面绕在圆柱上：转一圈，前进一个导程；导程角越小越省力，走得也越慢。",
+      twist: "阿基米德螺旋比“螺丝钉”早了两千年。把螺纹用来锁紧，是后来的人补上的。",
+      sources: [
+        { t: "Britannica · screw fastener", u: "https://www.britannica.com/technology/screw-fastener" },
+        { t: "Britannica · screw", u: "https://www.britannica.com/technology/screw" }
+      ]
+    },
+    {
+      id: "gear",
+      name: "齿轮",
+      en: "Gear",
+      era: "约公元前 100 年 → 中世纪钟楼 → 工业革命",
+      fig: "hGear",
+      story: "1901 年，希腊安提基特拉沉船里捞出一台青铜“计算机”，约公元前 100 年造，里面藏着 30 个齿轮。这是已知最复杂的古代齿轮机构，此后一千年，没有再出现同等级的东西，直到中世纪教堂钟楼。",
+      today: "从手表到风电齿轮箱，齿形从摆线演化到渐开线，加工从手工锉齿走到滚齿、磨齿。",
+      principle: "齿轮传的是齿数比：主动轮转一圈，从动轮转 z₁/z₂ 圈；转速降下来，扭矩就升上去。",
+      twist: "齿轮不是工业革命的发明。它在古希腊就到过顶峰，然后失传了一千年。",
+      sources: [
+        { t: "Britannica · Antikythera mechanism", u: "https://www.britannica.com/topic/Antikythera-mechanism" },
+        { t: "Britannica · gear", u: "https://www.britannica.com/technology/gear" }
+      ]
+    },
+    {
+      id: "bearing",
+      name: "滚珠轴承",
+      en: "Ball bearing",
+      era: "约公元前 40 年 → 1500 → 1794 → 1907",
+      fig: "hBearing",
+      story: "罗马人在内米湖的船上装了木制滚珠轴承，用来转动桌面，约公元前 40 年。达·芬奇在 1500 年前后画过滚珠轴承草图；1794 年英国人 Philip Vaughan 拿到第一个现代滚珠轴承专利；1907 年 SKF 的 Sven Wingquist 发明双列自调心球轴承。",
+      today: "从滑板轮到机床主轴，深沟球轴承是最常见的滚动轴承；陶瓷球、真空润滑则进了半导体设备。",
+      principle: "用滚动代替滑动，摩擦系数从 0.1 量级降到 0.001 量级（量级估算）——同样的力，发热和磨损都小一个数量级。",
+      twist: "最早的滚珠轴承是木头的，而且不是装在机器上，是装在船上的转桌里。",
+      sources: [
+        { t: "Race Engine Technology · ball bearing", u: "https://www.raceenginetechnology.com/News/back-to-basics-the-ball-bearing" },
+        { t: "Britannica · bearing", u: "https://www.britannica.com/technology/bearing-machine-component" }
+      ]
+    },
+    {
+      id: "ujoint",
+      name: "万向节",
+      en: "Universal joint",
+      era: "古代 → 1545 → 1676 → 今天",
+      fig: "hHooke",
+      story: "让两根成角度的轴同步转动的装置。1545 年 Cardano 描述过万向悬挂；1676 年 Robert Hooke 在《A Description of Helioscopes》里画出了用于天文仪器的万向节，所以英文里它常被叫作 Hooke joint。",
+      today: "从后驱车的传动轴到转向柱；等速万向节（CV joint）用双联结构抵消了单万向节的速度波动。",
+      principle: "单万向节在夹角 θ 下，输出转速会以两倍频波动；两个万向节对称布置，波动可以互相抵消。",
+      twist: "叫它“Cardan joint”其实不太准：Cardano 描述的是悬挂，真正把两根轴连起来的是 Hooke。",
+      sources: [
+        { t: "Britannica · universal joint", u: "https://www.britannica.com/technology/universal-joint" },
+        { t: "Britannica · automobile axle", u: "https://www.britannica.com/technology/automobile/Transmission" }
+      ]
+    },
+    {
+      id: "escapement",
+      name: "擒纵机构",
+      en: "Escapement",
+      era: "13 世纪 → 17 世纪 → 今天",
+      fig: "hEscapement",
+      story: "钟表能把连续的动力变成“一格一格”的走时，靠的就是擒纵机构。13 世纪的欧洲出现了冕状轮擒纵（verge escapement），这是机械钟得以成立的关键；17 世纪英国又发明了锚形擒纵，配摆锤，摆幅更小、走时更准。",
+      today: "机械表里仍是擒纵的天下：瑞士杠杆擒纵、同轴擒纵；原子钟则用石英振荡取代了它。",
+      principle: "擒纵轮被两个擒爪交替挡住、放开，每放一齿，摆轮得到一次能量补充——既计时，又“喂”振荡器。",
+      twist: "钟表最贵的不是齿轮，是擒纵：它决定了走时准不准，也决定了一块表要不要卖几十万。",
+      sources: [
+        { t: "Britannica · escapement", u: "https://www.britannica.com/technology/escapement" },
+        { t: "Britannica · clock", u: "https://www.britannica.com/technology/clock" }
+      ]
+    }
+  ]
 };
 
 </script>
@@ -3497,6 +3605,7 @@ p.vacuum = sel("f_vacuum", String(p.vacuum)) === "1" ? 1 : 0;
     });
 
     if (L.exam) html += examSection(L.exam, id);
+    if (window.HISTORY) html += historySection();
 
     html += '<div class="art-foot"><div class="done-row">';
     html += '<button class="done-btn' + (done.indexOf(id) >= 0 ? " is-done" : "") + '" id="doneBtn" type="button">' +
@@ -3515,6 +3624,106 @@ p.vacuum = sel("f_vacuum", String(p.vacuum)) === "1" ? 1 : 0;
     html += "</div></div>";
     html += "</article></div>";
     return html;
+  }
+
+
+  /* ---------------- 零件史 ---------------- */
+  function histFig(name) {
+    if (name === "hScrew") {
+      var th = "";
+      for (var i = 0; i < 7; i++) {
+        var x = 46 + i * 9;
+        th += '<line x1="' + x + '" y1="42" x2="' + (x + 5) + '" y2="78" stroke="var(--brand)" stroke-width="2.2"/>';
+      }
+      return '<svg viewBox="0 0 200 120" role="img" aria-label="螺纹">' +
+        '<rect x="14" y="38" width="24" height="44" rx="4" fill="var(--line-2)"/>' +
+        '<rect x="36" y="50" width="112" height="20" rx="3" fill="none" stroke="var(--ink-2)" stroke-width="1.4"/>' +
+        th +
+        '<rect x="120" y="34" width="34" height="52" rx="4" fill="none" stroke="var(--brand)" stroke-width="2"/>' +
+        '<line x1="46" y1="92" x2="55" y2="92" stroke="var(--muted)" stroke-width="1"/>' +
+        '<text x="86" y="108" text-anchor="middle" font-size="10" fill="var(--muted)">螺距 P</text>' +
+        '<text x="160" y="70" font-size="10" fill="var(--brand)">螺母</text>' +
+        "</svg>";
+    }
+    if (name === "hGear") {
+      function gear(cx, cy, r, n, c) {
+        var s = '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="none" stroke="' + c + '" stroke-width="2"/>';
+        for (var i = 0; i < n; i++) {
+          var t = (i / n) * Math.PI * 2;
+          var x1 = cx + Math.cos(t) * r, y1 = cy + Math.sin(t) * r;
+          var x2 = cx + Math.cos(t) * (r + 6), y2 = cy + Math.sin(t) * (r + 6);
+          s += '<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="' + c + '" stroke-width="3"/>';
+        }
+        s += '<circle cx="' + cx + '" cy="' + cy + '" r="4" fill="' + c + '"/>';
+        return s;
+      }
+      return '<svg viewBox="0 0 200 120" role="img" aria-label="齿轮">' +
+        gear(72, 60, 34, 14, "var(--brand)") + gear(132, 60, 22, 9, "var(--blue)") +
+        '<text x="72" y="112" text-anchor="middle" font-size="10" fill="var(--muted)">主动轮</text>' +
+        '<text x="132" y="112" text-anchor="middle" font-size="10" fill="var(--muted)">从动轮</text>' +
+        "</svg>";
+    }
+    if (name === "hBearing") {
+      var balls = "";
+      for (var i = 0; i < 8; i++) {
+        var t = (i / 8) * Math.PI * 2;
+        balls += '<circle cx="' + (100 + Math.cos(t) * 30).toFixed(1) + '" cy="' + (60 + Math.sin(t) * 30).toFixed(1) + '" r="7" fill="var(--brand)"/>';
+      }
+      return '<svg viewBox="0 0 200 120" role="img" aria-label="滚珠轴承">' +
+        '<circle cx="100" cy="60" r="48" fill="none" stroke="var(--ink-2)" stroke-width="3"/>' +
+        '<circle cx="100" cy="60" r="38" fill="none" stroke="var(--ink-2)" stroke-width="2"/>' +
+        '<circle cx="100" cy="60" r="22" fill="none" stroke="var(--ink-2)" stroke-width="2"/>' +
+        balls +
+        '<text x="100" y="113" text-anchor="middle" font-size="10" fill="var(--muted)">外圈 · 滚珠 · 内圈</text>' +
+        "</svg>";
+    }
+    if (name === "hHooke") {
+      return '<svg viewBox="0 0 200 120" role="img" aria-label="万向节">' +
+        '<rect x="16" y="46" width="54" height="28" rx="5" fill="none" stroke="var(--ink-2)" stroke-width="2"/>' +
+        '<rect x="130" y="46" width="54" height="28" rx="5" fill="none" stroke="var(--ink-2)" stroke-width="2"/>' +
+        '<circle cx="86" cy="60" r="18" fill="none" stroke="var(--brand)" stroke-width="2.4"/>' +
+        '<line x1="70" y1="60" x2="102" y2="60" stroke="var(--brand)" stroke-width="3"/>' +
+        '<line x1="86" y1="44" x2="86" y2="76" stroke="var(--blue)" stroke-width="3"/>' +
+        '<circle cx="86" cy="60" r="4" fill="var(--brand)"/>' +
+        '<line x1="44" y1="82" x2="70" y2="66" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="3 3"/>' +
+        '<line x1="156" y1="82" x2="102" y2="66" stroke="var(--muted)" stroke-width="1.4" stroke-dasharray="3 3"/>' +
+        '<text x="100" y="108" text-anchor="middle" font-size="10" fill="var(--muted)">两轴成角，仍能传动</text>' +
+        "</svg>";
+    }
+    return '<svg viewBox="0 0 200 120" role="img" aria-label="擒纵机构">' +
+      '<circle cx="90" cy="66" r="30" fill="none" stroke="var(--ink-2)" stroke-width="2"/>' +
+      '<path d="M90 36 L96 44 L90 46 Z M114 60 L108 66 L114 72 Z M90 96 L84 88 L90 86 Z M66 60 L72 66 L66 72 Z" fill="var(--brand)"/>' +
+      '<path d="M54 30 L74 44 M126 30 L106 44" stroke="var(--brand)" stroke-width="3"/>' +
+      '<path d="M54 30 Q90 20 126 30" fill="none" stroke="var(--brand)" stroke-width="2"/>' +
+      '<line x1="90" y1="96" x2="90" y2="114" stroke="var(--ink-2)" stroke-width="2"/>' +
+      '<circle cx="90" cy="114" r="4" fill="var(--ink-2)"/>' +
+      '<text x="150" y="52" font-size="10" fill="var(--muted)">擒爪</text>' +
+      '<text x="150" y="88" font-size="10" fill="var(--muted)">摆</text>' +
+      "</svg>";
+  }
+
+  function historySection() {
+    var H = window.HISTORY;
+    if (!H || !H.items || !H.items.length) return "";
+    var cards = H.items.map(function (it, i) {
+      var srcs = (it.sources || []).map(function (s) {
+        return '<a href="' + s.u + '" target="_blank" rel="noopener">' + esc(s.t) + "</a>";
+      }).join("");
+      return '<article class="hist-card">' +
+        '<div class="hist-num">' + (i + 1) + "</div>" +
+        '<div class="hist-name">' + esc(it.name) + '<span class="hist-en">' + esc(it.en) + "</span></div>" +
+        '<div class="hist-era">' + esc(it.era) + "</div>" +
+        '<div class="hist-fig">' + histFig(it.fig) + "</div>" +
+        '<p class="hist-p">' + md(it.story) + "</p>" +
+        '<p class="hist-p"><span class="hist-label">今天</span>' + md(it.today) + "</p>" +
+        '<p class="hist-p"><span class="hist-label">原理</span>' + md(it.principle) + "</p>" +
+        '<p class="hist-p hist-twist"><span class="hist-label">反常识</span>' + md(it.twist) + "</p>" +
+        '<div class="hist-src">' + srcs + "</div>" +
+        "</article>";
+    }).join("");
+    return '<section class="hist" id="hist"><div class="hist-head"><span class="chip warm">课后</span>' +
+      "<h2>" + esc(H.title) + "</h2><p>" + esc(H.sub) + "</p></div>" +
+      '<div class="hist-grid">' + cards + "</div></section>";
   }
 
   /* ---------------- 课后测验（逐题作答） ---------------- */

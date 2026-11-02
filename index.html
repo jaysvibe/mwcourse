@@ -1816,7 +1816,7 @@ window.COURSE.content[6] = {
       note: "温度列为行业通用值，非 MW 样本；温度是连续折减，超过 200°C 要问客户是否降额。" },
 
     { t: "h2", x: "场景映射：客户一句话，你想到哪一类" },
-    { t: "figure", name: "map", cap: "图 1　弹簧家族地图：先按受力方向分叉，再按行程与空间收窄" },
+    { t: "figure", name: "springs", cap: "图 1　弹簧家族：六种受力方式与各自的关键参数" },
     { t: "kv", items: [
       ["汽车悬架、阀门复位", "压缩弹簧"],
       ["卡箍、拉门、刹车回位", "拉伸弹簧"],
@@ -3771,6 +3771,7 @@ p.vacuum = sel("f_vacuum", String(p.vacuum)) === "1" ? 1 : 0;
     if (name === "tri") return figTri();
     if (name === "stiff") return figStiff();
     if (name === "map") return figMap();
+    if (name === "springs") return figSprings();
     return "";
   }
 
@@ -3866,6 +3867,53 @@ p.vacuum = sel("f_vacuum", String(p.vacuum)) === "1" ? 1 : 0;
       bars +
       '<text x="24" y="244" font-size="11" fill="var(--muted)">k ∝ d⁴ / (D³·n)：线径是四次方，改一点点就变很多</text>' +
       "</svg>";
+  }
+
+  function figSprings() {
+    var items = [
+      { t: "压缩弹簧", s: "轴向受压", k: "k ∝ d⁴/(D³·n)" },
+      { t: "拉伸弹簧", s: "轴向受拉", k: "带初拉力" },
+      { t: "扭转弹簧", s: "绕轴受扭", k: "扭矩 · 腿角" },
+      { t: "碟形弹簧", s: "轴向受压", k: "小行程 · 大力" },
+      { t: "波形弹簧", s: "轴向受压", k: "省高度" },
+      { t: "恒力弹簧", s: "定力拉伸", k: "力近似恒定" }
+    ];
+    function glyph(i, cx, cy) {
+      var c = "var(--brand)";
+      if (i === 0) {
+        return '<path d="M' + (cx - 40) + ' ' + cy + ' l10 -16 l10 32 l10 -32 l10 32 l10 -32 l10 32 l10 -16" fill="none" stroke="' + c + '" stroke-width="2.6"/>';
+      }
+      if (i === 1) {
+        return '<path d="M' + (cx - 38) + ' ' + cy + ' l9 -15 l9 30 l9 -30 l9 30 l9 -30 l9 30 l9 -15" fill="none" stroke="' + c + '" stroke-width="2.6"/>' +
+          '<circle cx="' + (cx - 46) + '" cy="' + cy + '" r="5" fill="none" stroke="' + c + '" stroke-width="2"/>' +
+          '<circle cx="' + (cx + 46) + '" cy="' + cy + '" r="5" fill="none" stroke="' + c + '" stroke-width="2"/>';
+      }
+      if (i === 2) {
+        return '<path d="M' + (cx - 30) + ' ' + (cy - 12) + ' q8 -10 16 0 q8 10 16 0 q8 -10 16 0 q8 10 16 0" fill="none" stroke="' + c + '" stroke-width="2.6"/>' +
+          '<path d="M' + (cx - 30) + ' ' + (cy - 12) + ' v-16 M' + (cx + 34) + ' ' + (cy - 12) + ' v16" stroke="' + c + '" stroke-width="2.6"/>';
+      }
+      if (i === 3) {
+        return '<path d="M' + (cx - 34) + ' ' + (cy + 10) + ' l14 -14 h40 l14 14 z" fill="none" stroke="' + c + '" stroke-width="2.4"/>' +
+          '<path d="M' + (cx - 34) + ' ' + (cy - 4) + ' l14 -14 h40 l14 14 z" fill="none" stroke="' + c + '" stroke-width="2.4"/>';
+      }
+      if (i === 4) {
+        return '<path d="M' + (cx - 40) + ' ' + cy + ' q10 -14 20 0 q10 14 20 0 q10 -14 20 0 q10 14 20 0" fill="none" stroke="' + c + '" stroke-width="2.6"/>' +
+          '<path d="M' + (cx - 40) + ' ' + (cy + 12) + ' q10 -14 20 0 q10 14 20 0 q10 -14 20 0 q10 14 20 0" fill="none" stroke="' + c + '" stroke-width="2.6"/>';
+      }
+      return '<path d="M' + (cx - 6) + ' ' + (cy + 14) + ' a16 16 0 1 1 32 0 a12 12 0 1 1 -24 0 a8 8 0 1 1 16 0" fill="none" stroke="' + c + '" stroke-width="2.6"/>' +
+        '<path d="M' + (cx - 6) + ' ' + (cy + 14) + ' h-26" stroke="' + c + '" stroke-width="2.6"/>';
+    }
+    var cells = items.map(function (it, i) {
+      var col = i % 3, row = Math.floor(i / 3);
+      var x = 18 + col * 212, y = 16 + row * 138;
+      return '<g>' +
+        '<rect x="' + x + '" y="' + y + '" width="196" height="122" rx="12" fill="var(--panel-2)" stroke="var(--line-2)"/>' +
+        '<text x="' + (x + 98) + '" y="' + (y + 28) + '" text-anchor="middle" font-size="14" font-weight="700" fill="var(--ink)">' + it.t + "</text>" +
+        glyph(i, x + 98, y + 66) +
+        '<text x="' + (x + 98) + '" y="' + (y + 104) + '" text-anchor="middle" font-size="11" fill="var(--muted)">' + it.s + " · " + it.k + "</text>" +
+        "</g>";
+    }).join("");
+    return '<svg viewBox="0 0 660 300" role="img" aria-label="六种弹簧的分工">' + cells + "</svg>";
   }
 
   function figTri() {

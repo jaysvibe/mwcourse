@@ -209,6 +209,13 @@ a.lesson-row:hover{background:var(--panel-2);text-decoration:none}
 .crumb a:hover{color:var(--brand)}
 
 .lesson-wrap{display:grid;gap:28px;max-width:1040px;margin:0 auto}
+.article{min-width:0}
+@media(max-width:720px){
+  .lesson-wrap{display:block!important;width:100%!important;max-width:100%!important}
+  .toc{display:none!important}
+  .article{width:100%!important;max-width:100%!important}
+  .tbl{width:100%!important;max-width:100%!important}
+}
 .basics-wrap{display:block;max-width:900px}
 .basics-wrap .article{max-width:none}
 @media(min-width:1000px){

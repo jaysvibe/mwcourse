@@ -974,7 +974,7 @@ html[data-theme="dark"] .lab3d-chip.on{color:#FFD600}
 <script>
 /* ============================================================
    MW 销售工程师训练营 · 课程数据
-   课程结构按《波纹管类组件的制造及其应用》（徐开先主编，1998）九章重排。
+   课程按销售现场的顺序重排：先认识零件，再学参数、工艺、选型，最后分产品与检测收口。
    第 1 课已按课本翻新；第 2 课起写入 assets/js/content-v2.js。
    课表由 book/curriculum.json 生成，勿手工改 lessons 顺序。
    ============================================================ */
@@ -6866,7 +6866,7 @@ three/build/three.module.js:
   /* ---------------- 视图：课程表 ---------------- */
   function viewPlan() {
     var html = '<h1 style="font-size:clamp(22px,4vw,30px);margin:0 0 6px">60 个工作日，9 章</h1>';
-    html += '<p style="color:var(--muted);margin:0 0 8px;max-width:64ch">按《波纹管类组件的制造及其应用》九章推进：第 1 章参数与材料打底，第 2–4 章金属波纹管、电沉积、焊接，第 5–8 章膨胀节、换热器、膜片膜盒、金属软管，第 9 章检测收口。每天 09:00 解锁一课，周末休息。</p>';
+    html += '<p style="color:var(--muted);margin:0 0 8px;max-width:64ch">九个阶段推进：先把零件认清楚，再学参数、工艺和选型；然后按产品分头走进电沉积、焊接、膨胀节、换热器、膜片膜盒和金属软管；最后学检测与交付。每课只讲事实和现场判断，不推导公式。每天 09:00 解锁一课，周末休息。</p>';
     html += '<p class="fine" style="margin-bottom:18px">进度会保存在本机浏览器；换设备不同步。</p>';
     var grouped = {};
     C.lessons.forEach(function (l) { (grouped[l.week] = grouped[l.week] || []).push(l); });

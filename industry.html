@@ -48,7 +48,8 @@ h1{font-size:clamp(28px,3.6vw,40px);line-height:1.22;margin:12px 0 8px;letter-sp
 .mod a:first-of-type{border-top:0}
 .mod a:hover{color:#111}
 .foot{grid-column:1/-1;border-top:3px solid var(--brand);margin-top:32px;padding-top:18px;color:var(--muted);font-size:12px}
-@media(max-width:900px){.wrap{display:block;padding:20px 15px 70px}.aside{display:none}.main{max-width:none}.mods{grid-template-columns:1fr}.hero{padding:28px 20px}}
+.visual-deck{margin:24px 0 34px;display:grid;gap:14px}.viz-heading{padding:25px 28px;border-radius:18px;background:linear-gradient(135deg,#112b43,#165678);color:#fff}.viz-heading span{font-size:11px;letter-spacing:.18em;color:#8fe9db;font-weight:800}.viz-heading h2{font-size:24px;margin:7px 0}.viz-heading p{color:#d6e8ee;margin:0;font-size:14px}.viz-panel{padding:20px;border:1px solid var(--line);border-radius:17px;background:#fff;box-shadow:0 8px 24px rgba(13,38,57,.05)}.viz-panel h3{margin:0 0 15px;font-size:17px}.viz-route,.viz-steps{display:flex;gap:8px;overflow-x:auto;padding-bottom:7px}.viz-route-item{min-width:135px;flex:1;text-decoration:none;color:#10334b;background:#e9f3f6;padding:12px;border-radius:12px;display:flex;gap:8px;align-items:flex-start;font-size:13px;font-weight:700}.viz-route-item i{font-style:normal;color:#117c85}.viz-step{min-width:142px;flex:1;border-top:4px solid #2e9fa5;background:#f1f7f8;border-radius:10px;padding:12px}.viz-step:nth-child(even){border-top-color:#e9a72a}.viz-index{display:block;color:#58788a;font-size:11px}.viz-step b{display:block;margin:5px 0;font-size:15px}.viz-step small{display:block;color:#246270;line-height:1.45}.viz-step p{font-size:12px;line-height:1.55;margin:9px 0 0}.viz-signals{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px}.viz-signal{border-left:3px solid #e9a72a;background:#fff8e9;padding:11px;border-radius:7px}.viz-signal b{display:block;font-size:13px;margin-bottom:5px}.viz-signal span{font-size:12px;line-height:1.55;color:#52646d}
+@media(max-width:900px){.wrap{display:block;padding:20px 15px 70px}.aside{display:none}.main{max-width:none}.mods{grid-template-columns:1fr}.hero{padding:28px 20px}.viz-heading{padding:20px}.viz-step{min-width:190px}}
 </style></head>
 <body><div class="wrap">
 <div class="top"><a class="brand" href="#/"><span class="logo">M</span><span><b>MW 全才销售课</b><span>30 课 · 按行业看懂机械</span></span></a><a class="back-main" href="index.html">← 返回训练营</a><span class="badge">30 课</span></div>
@@ -84,13 +85,22 @@ h1{font-size:clamp(28px,3.6vw,40px);line-height:1.22;margin:12px 0 8px;letter-sp
       <div class="mods">${mods}</div>`;
     $('.top .badge').textContent = D.lessons.length + ' 课';
   }
+  function visualDeck(L){
+    const source = new DOMParser().parseFromString(L.body, 'text/html');
+    const roleTable = source.querySelector('table');
+    const rows = roleTable ? [...roleTable.querySelectorAll('tbody tr')].slice(0,7).map(tr=>[...tr.cells].map(td=>td.textContent.trim())) : [];
+    const steps = rows.map((r,i)=>`<div class="viz-step"><span class="viz-index">${i+1}</span><b>${esc(r[0]||'环节')}</b><small>${esc(r[1]||'')}</small><p>${esc(r[2]||'')}</p></div>`).join('');
+    const signals = rows.filter(r=>r[3]).slice(0,5).map(r=>`<div class="viz-signal"><b>${esc(r[0])}</b><span>${esc(r[3])}</span></div>`).join('');
+    const sections = L.toc.filter(([sid])=>/^s[1-7]$/.test(sid)).map(([sid,t],i)=>`<a href="#${sid}" class="viz-route-item"><i>${String(i+1).padStart(2,'0')}</i><span>${esc(t.replace(/^[一二三四五六七八九十]+、/,''))}</span></a>`).join('');
+    return `<section class="visual-deck" aria-label="本课可视化导览"><div class="viz-heading"><span>VISUAL LEARNING</span><h2>一眼看懂本课</h2><p>下方图解提取自本课正文；用于建立关系，不代替现场数据与工程校核。</p></div><div class="viz-panel"><h3>知识路线图</h3><div class="viz-route">${sections}</div></div>${steps?`<div class="viz-panel"><h3>部件与作用 · 系统示意</h3><div class="viz-steps">${steps}</div></div>`:''}${signals?`<div class="viz-panel"><h3>失效信号 · 从症状回溯</h3><div class="viz-signals">${signals}</div></div>`:''}</section>`;
+  }
   function lesson(id){
     const L = byId.get(id);
     if(!L){ location.hash='#/'; return; }
     const m = modOf(id);
     $('.aside').innerHTML = sidebarLesson(L);
     $('.main').innerHTML = `<div class="meta"><span>第 ${id} 课</span><span>${m?esc(m.name):''}</span><span>建议 60 分钟</span><span>自测 + 作业</span></div>
-      <h1>${esc(L.title)}</h1><p class="sub">${esc(L.sub||'')}</p><article class="art">${L.body}</article>`;
+      <h1>${esc(L.title)}</h1><p class="sub">${esc(L.sub||'')}</p>${visualDeck(L)}<article class="art">${L.body}</article>`;
     $('.top .badge').textContent = (m?m.name:'') + ' · 第 ' + id + ' 课';
     window.scrollTo({top:0,behavior:'instant'});
   }

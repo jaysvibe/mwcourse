@@ -768,6 +768,14 @@ body::before{
   .lesson-row .t small{white-space:normal}
 }
 
+@media(max-width:720px){
+  .section-h{flex-wrap:wrap}
+  .section-h .more{white-space:normal;text-align:right;font-size:11px;max-width:100%}
+  .lesson-row{grid-template-columns:24px minmax(0,1fr)}
+  .lesson-row .st{display:none}
+  .lesson-row .t small{white-space:normal;overflow:visible}
+}
+
 </style>
 </head>
 <body>

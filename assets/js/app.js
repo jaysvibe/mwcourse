@@ -119,7 +119,7 @@
       html += '<div class="section-h"><h2>今日课程</h2><span class="more">' + fmtCN(unlockAt(tid)) + " 09:00 解锁</span></div>";
       html += '<div class="today">';
       html += "<div>";
-      html += '<span class="today-tag">DAY ' + tid + " · 第 " + meta.week + " 模块</span>";
+      html += '<span class="today-tag">DAY ' + tid + " · 第 " + meta.week + " 章</span>";
       html += "<h3>" + esc(L.title || meta.t) + "</h3>";
       html += "<p>" + esc(L.sub ? L.sub.slice(0, 62) + "…" : meta.focus) + "</p>";
       html += '<div class="today-meta"><span><i class="dot"></i>约 60 分钟</span><span>' + esc(meta.focus) + "</span></div>";
@@ -133,7 +133,7 @@
     // 本周
     var curWeek = tid > 0 ? C.lessons[tid - 1].week : 1;
     html += '<section class="section">';
-    html += '<div class="section-h"><h2>本模块 · M' + curWeek + "</h2><span class=\"more\">" + esc(C.weeks[curWeek - 1].goal) + "</span></div>";
+    html += '<div class="section-h"><h2>本章 · 第' + curWeek + " 章</h2><span class=\"more\">" + esc(C.weeks[curWeek - 1].goal) + "</span></div>";
     html += '<div class="weeks">' + weekCard(curWeek) + "</div>";
     html += "</section>";
 
@@ -237,7 +237,7 @@
     var toc = [];
     L.blocks.forEach(function (b, i) { if (b.t === "h2") toc.push({ i: i, x: b.x }); });
 
-    var html = '<div class="crumb"><a href="#/plan">课程表</a> / 第 ' + meta.week + ' 模块 / <span style="color:var(--ink-2)">DAY ' + id + "</span></div>";
+    var html = '<div class="crumb"><a href="#/plan">课程表</a> / 第 ' + meta.week + ' 章 / <span style="color:var(--ink-2)">DAY ' + id + "</span></div>";
     html += '<div class="lesson-wrap">';
 
     // 侧栏
@@ -252,7 +252,7 @@
     // 正文
     html += '<article class="article">';
     html += '<header class="art-head">';
-    html += '<div class="art-kicker"><span class="chip brand">DAY ' + id + '</span><span class="chip">第 ' + meta.week + ' 模块</span>';
+    html += '<div class="art-kicker"><span class="chip brand">DAY ' + id + '</span><span class="chip">第 ' + meta.week + ' 章</span>';
     (L.tags || []).forEach(function (t) { html += '<span class="chip">' + esc(t) + "</span>"; });
     html += '<span class="chip warm">约 60 分钟</span></div>';
     html += "<h1>" + esc(L.title) + "</h1>";

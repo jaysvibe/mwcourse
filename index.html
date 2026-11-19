@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
@@ -6,11 +6,11 @@
 <title>MW 全才销售课 · 第 1 课：一台泵站为什么会坏</title>
 <link rel="stylesheet" href="assets/css/app.css">
 <style>
-  .v4-wrap{max-width:860px;margin:0 auto;padding:28px 18px 80px}
+  .v4-wrap{max-width:860px;margin:0 auto;padding:28px 18px 80px;width:100%;box-sizing:border-box;overflow-x:hidden}
   .v4-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
   .v4-top a{font-size:13px;color:var(--muted);text-decoration:none}
   .v4-badge{display:inline-block;background:var(--brand);color:#111;font-weight:800;font-size:12px;padding:4px 9px;border-radius:999px}
-  .v4-h1{font-size:clamp(28px,4vw,42px);line-height:1.2;margin:14px 0 10px;letter-spacing:-.5px}
+  .v4-h1{font-size:clamp(28px,4vw,42px);line-height:1.2;margin:14px 0 10px;letter-spacing:-.5px;overflow-wrap:anywhere}
   .v4-sub{color:var(--muted);font-size:15px;line-height:1.7;margin:0 0 22px}
   .v4-meta{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 26px}
   .v4-meta span{font-size:12px;background:var(--panel-2);border:1px solid var(--line);padding:5px 10px;border-radius:999px;color:var(--muted)}
@@ -24,8 +24,10 @@
   .v4-art .key{border-left:4px solid var(--brand);background:color-mix(in srgb,var(--brand) 9%,var(--panel))}
   .v4-art .warn{border-left:4px solid #d9534f;background:#fff8f6}
   .v4-art .tip{border-left:4px solid #2f7d5c;background:#f5fbf7}
-  .v4-art table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
-  .v4-art th,.v4-art td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+  .v4-art table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px;table-layout:fixed}
+  .v4-art th,.v4-art td{border:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top;word-break:break-word}
+  .v4-art th:first-child{width:16%}
+  @media(max-width:720px){.v4-art table{font-size:12px}.v4-art th,.v4-art td{padding:6px 7px}}
   .v4-art th{background:var(--panel-2);font-weight:700}
   .v4-art .q{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0;background:var(--panel)}
   .v4-art .q b{display:block;margin-bottom:8px}
@@ -195,3 +197,5 @@
 </div>
 </body>
 </html>
+
+

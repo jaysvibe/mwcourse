@@ -35,6 +35,13 @@
   .v4-art .card div{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--panel)}
   .v4-art .card b{display:block;font-size:14px;margin-bottom:4px}
   .v4-art .card span{font-size:13px;color:var(--muted);line-height:1.6}
+  .train{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap;margin:18px 0}
+  .tnode{flex:1 1 120px;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--panel);min-width:110px}
+  .tnode b{display:block;font-size:14px}
+  .tnode span{display:block;font-size:12px;color:var(--muted);margin-top:3px;line-height:1.5}
+  .tarrow{align-self:center;color:var(--brand);font-weight:800;font-size:18px}
+  .tchain{margin:8px 0 0;padding:10px 12px;border-radius:10px;background:#fff4f0;border-left:4px solid #d9534f;font-size:13.5px;line-height:1.7;color:#7a3b2e}
+  @media(max-width:720px){.tarrow{display:none}.tnode{flex:1 1 100%}}
   .v4-map{border:1px solid var(--line);border-radius:16px;padding:18px;margin:30px 0;background:var(--panel)}
   .v4-map h2{margin-top:0;border:0;padding:0}
   .v4-map ol{margin:10px 0 0;padding-left:20px}
@@ -70,6 +77,19 @@
       <tr><td>密封</td><td>机械密封、填料</td><td>不让水沿轴漏出来</td><td>干转、偏磨、冲洗不足，很快失效</td></tr>
       <tr><td>管路</td><td>吸入管、出口管、阀门</td><td>把水送进来、送出去</td><td>管道应力拉歪泵体，密封和轴承遭殃</td></tr>
     </table>
+    <div class="train">
+      <div class="tnode"><b>电机</b><span>动力：转速 + 扭矩</span></div>
+      <div class="tarrow">→</div>
+      <div class="tnode"><b>联轴器</b><span>传动：容忍少量偏差</span></div>
+      <div class="tarrow">→</div>
+      <div class="tnode"><b>泵头</b><span>叶轮 + 泵轴 + 轴承</span></div>
+      <div class="tarrow">→</div>
+      <div class="tnode"><b>机械密封</b><span>密封：不让水沿轴漏</span></div>
+      <div class="tarrow">→</div>
+      <div class="tnode"><b>管路 / 阀门</b><span>把水送进送出</span></div>
+    </div>
+    <div class="tchain"><b>整条链：</b>对中差 → 轴承偏载发热 → 轴偏心 → 密封偏磨 → 漏水 → 客户说“泵坏了”</div>
+    <p style="font-size:13px;color:var(--muted);margin-top:8px">底座和地脚螺栓在下面托着整条链；管道应力从两端拉/顶泵体。它们不转，但能决定上面所有零件活多久。</p>
     <div class="box key"><b>一句话记住</b>泵不是“一个泵”，是“电机 + 联轴器 + 泵头 + 轴承 + 密封 + 底座 + 管路”的一支队伍。任何一个人掉链子，最后都表现为“泵坏了”。</div>
 
     <h2>二、动力：电机不是插上电就行</h2>
